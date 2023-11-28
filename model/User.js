@@ -1,6 +1,7 @@
 import mongoose, { Schema, model } from "mongoose";
+//import uniqueValidator from 'mongoose-unique-validator';
 
-//create the user schema
+// Create the user schema
 let userSchema = new Schema({
     id: {
         type: mongoose.ObjectId
@@ -33,13 +34,20 @@ let userSchema = new Schema({
         required: [true, 'You must provide a password!'],
         minLength: 3
     },
+    email: {
+        type: String,
+        required: [true, 'You must provide an email']
+    },
     creationDate: {
         type: Date,
         default: Date.now
     }
 })
 
-//Hide the hashed password and _v to the api users
+// To create a custom message for unique violation
+//userSchema.plugin(uniqueValidator, { message: `{PATH} is already taken` });
+
+// Hide the hashed password and _v to the API users
 userSchema.set("toJSON", {
     transform: transformJsonUser
 });
@@ -50,5 +58,5 @@ function transformJsonUser(doc, json, options) {
     return json;
 }
 
-//create model and export it
+// Create model and export it
 export const User = model('User', userSchema)

@@ -52,7 +52,7 @@ Places :
   -	description
 
 ### Documentation
-La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender.com
+La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender.com/apidoc
 
 ### Real-Time Endpoint
 

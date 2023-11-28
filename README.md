@@ -10,30 +10,25 @@ Nous avons rencontré des instabilités avec certaines fonctionnalités dans Mon
 
 ### Instructions d'installation
 
-Pour installer et exécuter l'API LostNFound sur votre machine locale, veuillez suivre les étapes ci-dessous:
+Pour installer et exécuter l'API LostNFound sur votre machine locale, veuillez suivre les étapes ci-dessous: 
 
-    Cloner le dépôt : Clonez le code source sur votre machine locale en utilisant la commande suivante :
+Cloner le dépôt : Clonez le code source sur votre machine locale en utilisant la commande suivante :
 
-    bash
-
-git clone [URL_DU_DEPOT]
+    bash : git clone [URL_DU_DEPOT]
 
 Remplacez [URL_DU_DEPOT] par l'URL de votre dépôt Git.
 
 Installer les dépendances : Naviguez dans le dossier du projet et installez les dépendances nécessaires à l'aide de npm :
 
-    bash
-
-cd chemin/vers/lostnfound
-npm install
+    bash : cd chemin/vers/lostnfound
+    bash : npm install
+    
 
 Configurer l'environnement : Créez un fichier .env à la racine du projet et configurez les variables d'environnement nécessaires (par exemple, les informations de connexion à la base de données).
 
 Lancer le serveur : Exécutez le serveur en utilisant npm :
 
-sql
-
-npm start
+    bash : npm start
 
 Le serveur devrait maintenant être en cours d'exécution et accessible à l'adresse http://localhost:PORT où PORT est le port configuré dans votre fichier .env.
 
@@ -72,4 +67,5 @@ Pour vous connecter au WebSocket et commencer à recevoir des mises à jour :
 
 
 Dzeneta Hamzabegovic, Sami Musta, Thomas Bercht
+
 M50-1

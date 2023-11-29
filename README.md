@@ -33,23 +33,30 @@ Lancer le serveur : Exécutez le serveur en utilisant npm :
 Le serveur devrait maintenant être en cours d'exécution et accessible à l'adresse http://localhost:PORT où PORT est le port configuré dans votre fichier .env.
 
 ### Structure
-Users: 
-  -	id
-  - firstName
-  - lastName
-  - userName
-  - password
-  -	field (filière)
+Users :
 
-Objets:
-  - name
-  - picture
-  - description
+ id: ObjectId (Géré automatiquement par MongoDB)
+ admin: Boolean (Indique si l'utilisateur est un administrateur)
+ firstName: String
+ lastName: String
+ userName: String (Unique)
+ password: String
+ email: String
+ creationDate: Date (Date de création de l'utilisateur)
+
+Objets :
+
+ name: String
+ picture: String (URL de l'image)
+ description: String
+ creationDate: Date
 
 Places :
-  - geolocalisation
-  -	floor
-  -	description
+
+ geolocalisation: Coordonnées [Latitude, Longitude] 
+ floor: String 
+ description: String
+ creationDate: Date
 
 ### Documentation
 La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender.com/apidoc
@@ -59,30 +66,30 @@ La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender
 Notre API LostNFound offre un point de terminaison WebSocket pour les mises à jour en temps réel, permettant aux utilisateurs de recevoir des notifications instantanées lorsqu'un nouvel objet est signalé comme trouvé.
 Comment Utiliser le WebSocket
 
-    Connexion WebSocket :
+Connexion WebSocket :
     Établissez une connexion WebSocket à l'adresse suivante : wss://lostnfound-api-gyqf.onrender.com.
 
-    Écoute des Messages :
+Écoute des Messages :
     Une fois connecté, vous pouvez écouter les messages qui seront envoyés au format JSON, contenant des informations sur les objets trouvés et d'autres notifications pertinentes.
 
-    Envoi de Messages :
+Envoi de Messages :
     Pour envoyer des messages, formattez-les en tant que JSON valide. Par exemple, pour signaler un objet trouvé, structurez votre message de cette manière :
 
     JSON : {
-  "action": "reportFound",
-  "item": {
-    "name": "Clé USB",
-    "location": "Bâtiment principal, 2ème étage",
-    "description": "Clé USB 16GB trouvée sur une table dans la salle de conférence"
-  }
-}
+      "action": "reportFound",
+      "item": {
+      "name": "Clé USB",
+      "location": "Bâtiment principal, 2ème étage",
+      "description": "Clé USB 16GB trouvée sur une table dans la salle de conférence"
+      }
+    }
 
 Exemples d'Utilisation
 
-    Recevoir des Mises à Jour en Temps Réel :
+Recevoir des Mises à Jour en Temps Réel :
     Lorsqu'un objet est signalé comme trouvé via l'API, les clients connectés au WebSocket recevront une notification contenant les détails de l'objet.
 
-    Interagir en Temps Réel :
+Interagir en Temps Réel :
     Votre client WebSocket peut également être utilisé pour interagir en temps réel, comme en demandant des informations supplémentaires sur un objet trouvé ou en signalant un objet perdu.
 
 

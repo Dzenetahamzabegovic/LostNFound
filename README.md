@@ -33,30 +33,43 @@ Lancer le serveur : Exécutez le serveur en utilisant npm :
 Le serveur devrait maintenant être en cours d'exécution et accessible à l'adresse http://localhost:PORT où PORT est le port configuré dans votre fichier .env.
 
 ### Structure
-Users :
+#### Users :
 
- id: ObjectId (Géré automatiquement par MongoDB)
- admin: Boolean (Indique si l'utilisateur est un administrateur)
- firstName: String
- lastName: String
- userName: String (Unique)
- password: String
- email: String
+ id: ObjectId (Géré automatiquement par MongoDB),
+ 
+ admin: Boolean (Indique si l'utilisateur est un administrateur),
+ 
+ firstName: String,
+ 
+ lastName: String,
+ 
+ userName: String (Unique),
+ 
+ password: String,
+ 
+ email: String,
+ 
  creationDate: Date (Date de création de l'utilisateur)
 
-Objets :
+#### Objets :
 
- name: String
- picture: String (URL de l'image)
- description: String
+ name: String,
+ 
+ picture: String (URL de l'image),
+ 
+ description: String,
+ 
  creationDate: Date
 
-Places :
+#### Places :
 
- geolocalisation: Coordonnées [Latitude, Longitude] 
- floor: String 
- description: String
- creationDate: Date
+ geolocalisation: Coordonnées [Latitude, Longitude],
+ 
+ floor: String,
+ 
+ description: String,
+ 
+ creationDate: Date,
 
 ### Documentation
 La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender.com/apidoc

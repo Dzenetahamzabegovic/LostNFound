@@ -10,6 +10,7 @@
     "test": "cross-env DATABASE_URL=mongodb://127.0.0.1:27017/lostNFound-test node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --runInBand"
   },
   "dependencies": {
+    "apidoc": "^1.2.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

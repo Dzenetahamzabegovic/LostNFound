@@ -26,6 +26,20 @@ Installer les dépendances : Naviguez dans le dossier du projet et installez les
 
 Configurer l'environnement : Créez un fichier .env à la racine du projet et configurez les variables d'environnement nécessaires (par exemple, les informations de connexion à la base de données).
 
+Voici les étapes pour le configurer :
+
+ 1. Créez un fichier nommé .env dans le répertoire principal de l'API LostNFound.
+
+ 2. Ajoutez la ligne suivante dans le fichier .env :
+
+        SECRET_KEY='changeme'
+
+Cette clé secrète est utilisée pour la signature et/ou le chiffrement de tokens, sessions et autres éléments nécessitant une sécurité accrue. Assurez-vous de remplacer 'changeme' par une chaîne de caractères forte et unique pour garantir la sécurité de votre application.
+
+Enregistrez et fermez le fichier. L'API utilisera automatiquement ces variables d'environnement lors de son exécution.
+
+Il est important de ne jamais commettre votre fichier .env dans votre dépôt de code source, car il peut contenir des informations sensibles telles que des clés secrètes ou des mots de passe.
+
 Lancer le serveur : Exécutez le serveur en utilisant npm :
 
     bash : npm start

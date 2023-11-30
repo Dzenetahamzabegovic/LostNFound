@@ -90,34 +90,26 @@ La documentation de l'api est disponible à https://lostnfound-api-gyqf.onrender
 
 ### Real-Time Endpoint
 
-Notre API LostNFound offre un point de terminaison WebSocket pour les mises à jour en temps réel, permettant aux utilisateurs de recevoir des notifications instantanées lorsqu'un nouvel objet est signalé comme trouvé.
+Notre API LostNFound offre un point de terminaison WebSocket pour les mises à jour en temps réel. Ce système permet aux utilisateurs de recevoir des notifications instantanées lorsqu'un nouvel objet est signalé comme trouvé.
 Comment Utiliser le WebSocket
 
 Connexion WebSocket :
+
     Établissez une connexion WebSocket à l'adresse suivante : wss://lostnfound-api-gyqf.onrender.com.
 
 Écoute des Messages :
-    Une fois connecté, vous pouvez écouter les messages qui seront envoyés au format JSON, contenant des informations sur les objets trouvés et d'autres notifications pertinentes.
 
-Envoi de Messages :
-    Pour envoyer des messages, formattez-les en tant que JSON valide. Par exemple, pour signaler un objet trouvé, structurez votre message de cette manière :
+    Une fois connecté, le client peut écouter les messages envoyés au format JSON. Ces messages contiennent des informations sur les objets trouvés et d'autres notifications pertinentes.
 
-    JSON : {
-      "action": "reportFound",
-      "item": {
-      "name": "Clé USB",
-      "location": "Bâtiment principal, 2ème étage",
-      "description": "Clé USB 16GB trouvée sur une table dans la salle de conférence"
-      }
-    }
+Fonctionnalités du WebSocket
 
-Exemples d'Utilisation
+    Gestion des Connexions : Le serveur WebSocket gère les connexions entrantes des clients. Chaque client qui se connecte est ajouté à une liste pour un suivi facile.
 
-Recevoir des Mises à Jour en Temps Réel :
-    Lorsqu'un objet est signalé comme trouvé via l'API, les clients connectés au WebSocket recevront une notification contenant les détails de l'objet.
+    Réception et Traitement des Messages : Le serveur écoute les messages envoyés par les clients, les analyse pour s'assurer qu'ils sont au format JSON valide, et effectue des actions basées sur ces messages.
 
-Interagir en Temps Réel :
-    Votre client WebSocket peut également être utilisé pour interagir en temps réel, comme en demandant des informations supplémentaires sur un objet trouvé ou en signalant un objet perdu.
+    Diffusion de Messages : Lorsqu'un objet est signalé comme trouvé, le serveur diffuse un message à tous les clients connectés pour les informer en temps réel.
+
+    Gestion de la Déconnexion : Lorsqu'un client se déconnecte, il est retiré de la liste des clients actifs, garantissant que les messages ne sont envoyés qu'aux clients connectés.
 
 
 

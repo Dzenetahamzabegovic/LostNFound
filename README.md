@@ -95,21 +95,21 @@ Comment Utiliser le WebSocket
 
 Connexion WebSocket :
 
-    Établissez une connexion WebSocket à l'adresse suivante : wss://lostnfound-api-gyqf.onrender.com.
+  Établissez une connexion WebSocket à l'adresse suivante : wss://lostnfound-api-gyqf.onrender.com.
 
 Écoute des Messages :
 
-    Une fois connecté, le client peut écouter les messages envoyés au format JSON. Ces messages contiennent des informations sur les objets trouvés et d'autres notifications pertinentes.
+  Une fois connecté, le client peut écouter les messages envoyés au format JSON. Ces messages contiennent des informations sur les objets trouvés et d'autres notifications pertinentes.
 
 Fonctionnalités du WebSocket
 
-    Gestion des Connexions : Le serveur WebSocket gère les connexions entrantes des clients. Chaque client qui se connecte est ajouté à une liste pour un suivi facile.
+  Gestion des Connexions : Le serveur WebSocket gère les connexions entrantes des clients. Chaque client qui se connecte est ajouté à une liste pour un suivi facile.
 
-    Réception et Traitement des Messages : Le serveur écoute les messages envoyés par les clients, les analyse pour s'assurer qu'ils sont au format JSON valide, et effectue des actions basées sur ces messages.
+  Réception et Traitement des Messages : Le serveur écoute les messages envoyés par les clients, les analyse pour s'assurer qu'ils sont au format JSON valide, et effectue des actions basées sur ces messages.
 
-    Diffusion de Messages : Lorsqu'un objet est signalé comme trouvé, le serveur diffuse un message à tous les clients connectés pour les informer en temps réel.
+  Diffusion de Messages : Lorsqu'un objet est signalé comme trouvé, le serveur diffuse un message à tous les clients connectés pour les informer en temps réel.
 
-    Gestion de la Déconnexion : Lorsqu'un client se déconnecte, il est retiré de la liste des clients actifs, garantissant que les messages ne sont envoyés qu'aux clients connectés.
+  Gestion de la Déconnexion : Lorsqu'un client se déconnecte, il est retiré de la liste des clients actifs, garantissant que les messages ne sont envoyés qu'aux clients connectés.
 
 
 

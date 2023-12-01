@@ -1,7 +1,7 @@
 # Projet API - LostNFound
 
 ### Explication du projet
-LostNFound est une API conçue et développée dans le cadre du cours ArchiOWeb durant l'année académique 2023-2024 à la HEIG. LostNFound permet aux utilisateurs de signaler des objets perdus ou trouvés au sein de la HEIG. Après s'être connectés, les utilisateurs accèdent à un feed des objets trouvés, enrichi de photos, informations de géolocalisation, descriptions et du nom de l'utilisateur qui a trouvé l'objet. Ils peuvent ainsi rechercher des objets perdus et entrer en contact avec la personne qui les a trouvés.
+LostNFound est une API conçue et développée dans le cadre du cours ArchiOWeb durant l'année académique 2023-2024 à la HEIG. LostNFound permet aux utilisateurs de signaler des objets trouvés au sein de la HEIG. Après s'être connectés, les utilisateurs accèdent à un feed des objets trouvés, enrichi de photos, informations de géolocalisation, descriptions et du nom de l'utilisateur qui a trouvé l'objet. Ils peuvent ainsi rechercher des objets perdus et entrer en contact avec la personne qui les a trouvés.
 
 Nous soulignons l'importance du bon sens et de la bonne foi des utilisateurs pour utiliser cette API, car elle fonctionne sans vérification stricte de la propriété des objets perdus.
 

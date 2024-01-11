@@ -1,6 +1,6 @@
 import express from "express";
 import createError from "http-errors";
-import logger from "morgan";
+import logger from "morgan"; 
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 import placesRouter from "./routes/places.js";  // Importation de la route places.js
@@ -8,6 +8,7 @@ import objectsRouter from "./routes/objects.js";  // Importation de la route obj
 import loginRouter from "./routes/login.js";  // Importation de la route login.js
 import mongoose from 'mongoose';
 import path from 'path';
+import cors from 'cors';
 
 mongoose.connect(process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/lostNFound');
 
@@ -17,6 +18,7 @@ const app = express();
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

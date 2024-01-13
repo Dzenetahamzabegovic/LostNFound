@@ -38,7 +38,7 @@ const router = express.Router();
  */
 // Get all users
 router.get("/", function (req, res, next) {
-  User.find().populate(['objects']).exec(function (err, user) {
+  User.find().exec(function (err, user) {
     if (err) {
       return next(err)
     }
@@ -145,7 +145,7 @@ router.get("/", function (req, res, next) {
 
 // Get a specific user
 router.get("/:id", function (req, res, next) {
-  User.findOne({_id: req.params.id}).populate(['objects']).exec(function (err, user) {
+  User.findOne({_id: req.params.id}).exec(function (err, user) {
     if(err) {
       return next(err)
     }
@@ -196,7 +196,7 @@ router.get("/:id/objects", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      res.status(200).send(objects)
+      res.status(200).send({objects, user})
     })
   })
 });

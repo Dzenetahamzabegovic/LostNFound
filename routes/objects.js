@@ -1,3 +1,4 @@
+
 import express from "express";
 import { Object } from "../model/Object.js"
 import { User } from "../model/User.js";
@@ -39,7 +40,7 @@ const router = express.Router();
 
 // Get all objects
 router.get("/", function (req, res, next) {
-  Object.find().exec(function (err, object) {
+  Object.find().populate(['userId', 'placeId']).exec(function (err, object) {
     if (err) {
       return next(err)
     }
@@ -75,7 +76,7 @@ router.get("/", function (req, res, next) {
  */
 
 router.get("/:id", function (req, res, next) {
-  Object.findOne({ _id: req.params.id }).exec(function (err, object) {
+  Object.findOne({ _id: req.params.id }).populate(['userId', 'placeId']).exec(function (err, object) {
     if (err) {
       return next(err)
     }

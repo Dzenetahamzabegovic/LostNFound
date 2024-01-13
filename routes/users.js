@@ -192,7 +192,7 @@ router.get("/:id/objects", function (req, res, next) {
     if (err) {
       return next(err)
     }
-    Object.find({ userId: req.params.id }).exec(function (err, objects) {
+    Object.find({ userId: req.params.id }).populate(['userId', 'placeId']).exec(function (err, objects) {
       if (err) {
         return next(err);
       }

@@ -9,6 +9,10 @@ let userSchema = new Schema({
     admin: {
         type: Boolean,
         default: false
+    },    
+    isDesactivated: {
+        type: Boolean,
+        default: false
     },
     firstName: {
         type: String,
@@ -41,7 +45,13 @@ let userSchema = new Schema({
     creationDate: {
         type: Date,
         default: Date.now
-    }
+    },
+    objects: [
+        {
+            type: mongoose.ObjectId,
+            ref: "Object"
+        }
+    ]
 })
 
 // To create a custom message for unique violation

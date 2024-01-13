@@ -26,11 +26,13 @@ let objectSchema = new Schema({
     },
     userId: {
         type: mongoose.ObjectId,
-        required: [true, 'You must provide a userId!']
+        required: [true, 'You must provide a userId!'],
+        ref: "User"
     },
     placeId: {
         type: mongoose.ObjectId,
-        required: [true, 'You must provide a placeId!']
+        required: [true, 'You must provide a placeId!'],
+        ref: "Place"
     },
 })
 

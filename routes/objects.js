@@ -1,4 +1,3 @@
-
 import express from "express";
 import { Object } from "../model/Object.js"
 import { User } from "../model/User.js";
@@ -169,11 +168,11 @@ router.post("/", authenticate, async function (req, res, next) {
 
 // DELETE route to delete an item
 router.delete("/:id", authenticate, function (req, res, next) {
-  Object.findOne({ _id: req.params.id }).exec(function (err, object) {
+  Object.findOne({ _id: req.params.id }).populate(['userId']).exec(function (err, object) {
     if (err) {
       return next(err)
     }
-    if (object.userId == req.currentUserId) {
+    if (object?.userId?._id == req.currentUserId || object?.userId?.admin) {
       Object.findByIdAndDelete(req.params.id, function (err) {
         if (err) return next(err);
         res.status(200).send('Deleted successfully!');
@@ -219,12 +218,12 @@ router.delete("/:id", authenticate, function (req, res, next) {
 
 // PUT route to update an item
 router.put("/:id", authenticate, function (req, res, next) {
-  Object.findOne({ _id: req.params.id }).exec(function (err, object) {
+  Object.findOne({ _id: req.params.id }).populate(['userId']).exec(function (err, object) {
     if (err) {
       return next(err)
     }
     //If the correct user is logged in we update the object
-    if (object.userId == req.currentUserId) {
+    if (object?.userId?._id == req.currentUserId || object?.userId?.admin) {
       Object.findByIdAndUpdate({ _id: req.params.id }, {
         name: req.body.name,
         picture: req.body.picture,

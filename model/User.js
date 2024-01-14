@@ -20,6 +20,9 @@ let userSchema = new Schema({
         maxLength: 20,
         minLength: 3
     },
+    pushNotificationToken: {
+        type: String
+    },
     lastName: {
         type: String,
         required: [true, 'You must provide a lastname!'],

@@ -11,6 +11,10 @@ let objectSchema = new Schema({
         maxLength: 30,
         minLength: 3
     },
+    isFound: {
+        type: Boolean,
+        default: false
+    },
     picture: {
         type: String,
         required: [true, 'You must provide a picture!']

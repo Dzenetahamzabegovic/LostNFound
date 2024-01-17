@@ -353,38 +353,16 @@ router.put("/:id", authenticate, function (req, res, next) {
       return next(err)
     }
     //If the correct user is logged in he can update his profile (can't change the role)
-    if (req.params.id == req.currentUserId) {
+    // if (req.params.id == req.currentUserId) {
       await User.findByIdAndUpdate({ _id: req.params.id }, {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        email: req.body.email
+        ...req.body
       }, { new: true, runValidators: true }).exec(function (err, updatedUser) {
         if (err) {
           return next(err);
         }
         res.status(200).send(updatedUser)
       })
-    } else {
-      //If this is not the current user connected's profile, but he is an admin, he can grant the admin role to the user.
-      User.findOne({ _id: req.currentUserId }).exec(function (err, user) {
-        if (err) {
-          return next(err)
-        }
-        if (user.admin) {
-          User.findByIdAndUpdate({ _id: req.params.id }, {
-            admin: req.body.admin
-          }, { new: true, runValidators: true }).exec(function (err, updatedUser) {
-            if (err) {
-              return next(err);
-            }
-            res.status(200).send(updatedUser);
-          })
-        } else {//This is not an admin, but he tries to modify somebody elses profile
-          res.status(403).send("Don't have the rights to do that")
-        }
-      })
-    }
+
   })
 });
 export default router;

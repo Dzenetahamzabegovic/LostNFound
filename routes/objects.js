@@ -225,9 +225,7 @@ router.put("/:id", authenticate, function (req, res, next) {
     //If the correct user is logged in we update the object
     if (object?.userId?._id == req.currentUserId || object?.userId?.admin) {
       Object.findByIdAndUpdate({ _id: req.params.id }, {
-        name: req.body.name,
-        picture: req.body.picture,
-        description: req.body.description
+        ...req.body
       }, { new: true, runValidators: true }).exec(function (err, updatedObject) {
         if (err) {
           return next(err)

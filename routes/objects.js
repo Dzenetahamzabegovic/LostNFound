@@ -43,7 +43,7 @@ router.get("/", function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(200).send(object)
+    return res.status(200).send(object)
   })
 });
 
@@ -79,7 +79,7 @@ router.get("/:id", function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(200).send(object)
+    return res.status(200).send(object)
   })
 });
 
@@ -122,7 +122,7 @@ router.post("/", authenticate, async function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(201).send(savedObject)
+    return res.status(201).send(savedObject)
 
     User.findOne({ _id: newObject.userId }).exec(function (userErr, user) {
       if (userErr || !user) {
@@ -236,10 +236,10 @@ router.put("/:id", authenticate, function (req, res, next) {
         if (err) {
           return next(err)
         }
-        res.status(200).send(updatedObject)
+        return res.status(200).send(updatedObject)
       })
     } else {
-      res.status(403).send("Don't have the rights to do that")
+      return  res.status(403).send("Don't have the rights to do that")
     }
   })
 })

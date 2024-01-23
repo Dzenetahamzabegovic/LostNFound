@@ -168,12 +168,6 @@ router.post("/", authenticate, async function (req, res, next) {
 
 // DELETE route to delete an item
 router.delete("/:id", authenticate, function (req, res, next) {
-  Object.findByIdAndDelete(req.params.id, function (err) {
-      if (err) return next(err);
-      return res.status(200).send('Deleted successfully!');
-    });
-  
-  
   Object.findOne({ _id: req.params.id }).populate(['userId']).exec(function (err, object) {
     if (err) {
       return next(err)
@@ -181,10 +175,10 @@ router.delete("/:id", authenticate, function (req, res, next) {
     if (object?.userId?._id == req.currentUserId || object?.userId?.admin) {
       Object.findByIdAndDelete(req.params.id, function (err) {
         if (err) return next(err);
-        res.status(200).send('Deleted successfully!');
+        return res.status(200).send('Deleted successfully!');
       });
     } else {
-      res.status(403).send("Don't have the rights to do that")
+     return  res.status(403).send("Don't have the rights to do that")
     }
   })
 });

@@ -108,7 +108,7 @@ router.get("/", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      res.status(200).send(users.map(user => {
+      return res.status(200).send(users.map(user => {
         const serialized = new User(user).toJSON() //Transform user to Mongoose model
         serialized.objectsPosted = user.objectsPosted //Add the aggregated property
         return serialized
@@ -149,7 +149,7 @@ router.get("/:id", function (req, res, next) {
     if(err) {
       return next(err)
     }
-    res.status(200).send(user)
+    return res.status(200).send(user)
   })
 });
 
@@ -196,7 +196,7 @@ router.get("/:id/objects", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      res.status(200).send({objects, user})
+      return res.status(200).send({objects, user})
     })
   })
 });
@@ -253,7 +253,7 @@ router.post("/", async function (req, res, next) {
       if (err) {
         return next(err)
       }
-      res.status(201).send(savedUser)
+      return res.status(201).send(savedUser)
     })
   })
 })
@@ -301,10 +301,10 @@ router.delete("/:id", authenticate, function (req, res, next) {
         if (err) {
           return next(err)
         }
-        res.status(200).send(removedUser)
+        return res.status(200).send(removedUser)
       })
     } else {
-      res.status(403).send("Don't have the rights to do that")
+      return res.status(403).send("Don't have the rights to do that")
     }
   })
 });
@@ -360,7 +360,7 @@ router.put("/:id", authenticate, function (req, res, next) {
         if (err) {
           return next(err);
         }
-        res.status(200).send(updatedUser)
+        return res.status(200).send(updatedUser)
       })
 
   })

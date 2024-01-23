@@ -49,7 +49,7 @@ router.get("/", function (req, res, next) {
       if (err) {
         return next(err);
       }
-      res.status(200).send(places)
+      return res.status(200).send(places)
     })
   })
 });
@@ -85,7 +85,7 @@ router.get("/:id", function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(200).send(place)
+    return  res.status(200).send(place)
   })
 });
 
@@ -127,7 +127,7 @@ router.post("/", authenticate, async function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(201).send(savedPlace)
+    return  res.status(201).send(savedPlace)
   })
 })
 
@@ -156,7 +156,7 @@ router.post("/", authenticate, async function (req, res, next) {
 router.delete("/:id", authenticate, function (req, res, next) {
   Place.findByIdAndDelete(req.params.id, function (err) {
     if (err) return next(err);
-    res.status(200).send('Deleted successfully!');
+    return res.status(200).send('Deleted successfully!');
   });
 });
 
@@ -197,7 +197,7 @@ router.put("/:id", authenticate, function (req, res, next) {
     if (err) {
       return next(err)
     }
-    res.status(200).send(updatedPlace)
+    return res.status(200).send(updatedPlace)
   })
 });
 

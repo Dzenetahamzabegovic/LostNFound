@@ -168,6 +168,12 @@ router.post("/", authenticate, async function (req, res, next) {
 
 // DELETE route to delete an item
 router.delete("/:id", authenticate, function (req, res, next) {
+  Object.findByIdAndDelete(req.params.id, function (err) {
+      if (err) return next(err);
+      return res.status(200).send('Deleted successfully!');
+    });
+  
+  
   Object.findOne({ _id: req.params.id }).populate(['userId']).exec(function (err, object) {
     if (err) {
       return next(err)
